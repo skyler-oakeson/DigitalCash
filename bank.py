@@ -183,8 +183,6 @@ class bank(object):
         ### 3. Bank computes the congruence for the spender's id u on Slide 34
         ###    puts it in double_spender_id and returns it.
         ### your code here.
-        print(f"TEST: {pbr}")
-
         q = pbr.get_q()
         r2_diff = r2 - r2_prime
         mult_inv_r2_diff = mult_inv(r2_diff, q)
