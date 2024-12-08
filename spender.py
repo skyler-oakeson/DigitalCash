@@ -123,17 +123,21 @@ class spender(object):
         Cf. Slides 32, 33, 34.
         """
         ### 1. get a spent coin from self.__spent_coins
-        ### your code here
+        spent_coin = self.__spent_coins.pop()[0]
         print('Spender {} attempts to double spend coin = {}'.format(self.__I, spent_coin))
         
         ### 2. the spender requests the vendor to compute d_prime.
         ###    with compute_d() above.
-        ### your code here
+        d_prime = vdr.compute_d(spent_coin, pbr)
         print('d_prime = {}'.format(d_prime))
         assert d_prime is not None
         
         ### 3. the spender computes r1_prime, r2_prime
         ### your code here
+        s, x1, x2, _, _ = self.__secret_5_tup
+        q = pbr.get_q()
+        r1_prime = (d_prime*self.__u*s + x1) % q
+        r2_prime = (d_prime*s + x2) % q
 
         ### 4. the spender requests the vendor to accept the spent coin.
         ###    with accept_coin() defined above. 

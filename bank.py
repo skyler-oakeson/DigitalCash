@@ -169,11 +169,26 @@ class bank(object):
         ### 1. Bank looks up the signature for the coin.
         ### your code here
 
+        spent_coin_sig = self.__spent_coins.get(coin)
+
+        if not spent_coin_sig:
+            return
+
+
         ### 2. Bank extracts r1_prime, r2_prime, d_prime from that signature.
+        A, B, z, a, b, r = coin
+        r1, r2, d = spent_coin_sig
+        r1_prime, r2_prime, d_prime = coin_signature
         
         ### 3. Bank computes the congruence for the spender's id u on Slide 34
         ###    puts it in double_spender_id and returns it.
         ### your code here.
+        print(f"TEST: {pbr}")
+
+        q = pbr.get_q()
+        r2_diff = r2 - r2_prime
+        mult_inv_r2_diff = mult_inv(r2_diff, q)
+        double_spender_id = ((r1 - r1_prime)*mult_inv_r2_diff) % q
         
         print('double spender id = {}'.format(double_spender_id))
         return double_spender_id

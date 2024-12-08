@@ -62,7 +62,6 @@ class rsa_uts(unittest.TestCase):
         vdr = vendor()
         vdr.create_bank_account(bnk)
 
-        '''
         ### spender attempts to double spend a coin at the vendor vndr.
         spr.double_spend_coin(vdr, pbr)
         ### vendor deposits it at the bank.
@@ -76,7 +75,6 @@ class rsa_uts(unittest.TestCase):
         ### the vendor's balance is still 0, because
         ### the double spent coint was not deposited.
         assert vdr.get_balance(bnk) == 0
-        '''
     
     def runTest(self):
         pass

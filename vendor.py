@@ -87,7 +87,7 @@ class vendor(object):
         id = self.__V
         coin, coin_sign = self.__accepted_coin, self.__accepted_coin_signature
         print('Merchant {} requested Bank to deposit coin {} with signature {}'.format(self.__V, coin, coin_sign))
-        return bnk.deposit_coin_for_merchant(self.__V,
+        return bnk.deposit_coin_for_merchant(id,
                                              self.__accepted_coin,
                                              self.__accepted_coin_signature,
                                              pbr)
